@@ -1,0 +1,16 @@
+[
+    {
+        "id": "123456",
+        "title": "Note 1",
+        "content": "Content 1",
+        "createdAt": "new Date()",
+        "updatedAt": "new Date()"
+    },
+    {
+        "id": "123456",
+        "title": "karim tonto",
+        "content": "Content 1",
+        "createdAt": "new Date()",
+        "updatedAt": "new Date()"
+    }
+]
