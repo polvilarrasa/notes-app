@@ -7,11 +7,15 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css"; 
 //icons
 import 'primeicons/primeicons.css';
+//flex
+import 'primeflex/primeflex.css';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
       <Home />
+      <Footer />
     </div>
   );
 }

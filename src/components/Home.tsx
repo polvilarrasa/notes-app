@@ -1,18 +1,23 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Note as NoteType } from '../types/Note';
 import Note from './Note';
 import { ListBox } from 'primereact/listbox';
 import { NoteJsonRepository } from '../repository/NoteJsonRepository';
 import { NoteInterface } from '../repository/NoteInterface';
+import { NoteFirebaseRepository } from '../repository/NoteFirebaseRepository';
 
 export const Home = () => {
-    let noteRepository: NoteInterface;
-    noteRepository = new NoteJsonRepository("http://localhost:3000");
+    const [notes, setNotes] = useState<NoteType[]>([]);
 
-    const [notes, setNotes] = useState<NoteType[]>(
-        noteRepository.getNotes()
-    );
+    useEffect(() => {
+        let noteRepository: NoteInterface;
+        noteRepository = new NoteJsonRepository("http://localhost:3000");
+
+        noteRepository.getNotes().then((notes) => {
+            setNotes(notes);
+        });
+    }, []);
 
     const noteTemplate = (option: NoteType) => {
         return (
@@ -24,7 +29,7 @@ export const Home = () => {
         <>
             <h1>Home</h1>
             <ListBox filter filterBy="title,content" options={notes} optionLabel="name" 
-                itemTemplate={noteTemplate} className="w-full md:w-14rem" listStyle={{ maxHeight: '250px' }} />
+                itemTemplate={noteTemplate} className="w-full md:w-14rem" />
         </>
     )
 }

@@ -12,5 +12,12 @@
         "content": "Content 1",
         "createdAt": "new Date()",
         "updatedAt": "new Date()"
+    },
+    {
+        "id": "123456",
+        "title": "Note 3",
+        "content": "Content 1",
+        "createdAt": "new Date()",
+        "updatedAt": "new Date()"
     }
 ]

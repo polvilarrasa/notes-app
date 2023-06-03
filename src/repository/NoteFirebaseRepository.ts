@@ -2,7 +2,7 @@ import { Note } from "../types/Note";
 import { RequestParamsType } from "../types/RequestParamsType";
 import { NoteInterface } from "./NoteInterface";
 
-export class NoteJsonRepository implements NoteInterface {
+export class NoteFirebaseRepository implements NoteInterface {
     basicUrl: string;
 
     constructor(basicUrl: string) {
@@ -10,18 +10,7 @@ export class NoteJsonRepository implements NoteInterface {
     }
 
     getNotes(): Promise<Note[]> {
-        return this.request(this.basicUrl + "/notes.json", "GET", "")
-            .then((notesJson) => notesJson.map((noteJson: any) => {
-                const note: Note = {
-                    id: noteJson.id,
-                    title: noteJson.title,
-                    content: noteJson.content,
-                    createdAt: new Date(noteJson.createdAt),
-                    updatedAt: new Date(noteJson.updatedAt),
-                };
-                return note;
-            })
-        );
+        throw new Error("Method not implemented.");
     }
     getNoteById(id: string): Note | null {
         throw new Error("Method not implemented.");
